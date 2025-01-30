@@ -1,11 +1,13 @@
 const express = require('express');
 const fs = require('fs');
+const cors = require('cors');
 const parser = require('csv-parser');
 
 const PORT = 8000;
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 /* fs.writeFile('./test.txt', 'just a test\nanother line', (err) => {
   err ? console.log(err) : console.log('Content successfully written.');
