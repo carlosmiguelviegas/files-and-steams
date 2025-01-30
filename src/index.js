@@ -26,8 +26,13 @@ const writeStream = fs.createWriteStream('./test2.txt');
 readStream.pipe(writeStream); */
 
 app.post('/', upload.single('file'), (req, res) => {
-  console.log(req.params.file);
-  fs.createReadStream(req.file).pipe(parser()).on('data', content => console.log(content));
+
+  const { path } = req['file']; 
+  const rows = [];
+  
+  fs.createReadStream(path)
+  .pipe(parser())
+  .on('data', chunck => rows.push(chunck));
 });
 
 app.listen(PORT, () => console.log('server connected and listening to requests...'));
