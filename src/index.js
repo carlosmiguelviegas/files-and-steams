@@ -12,7 +12,7 @@ app.use(cors());
 
 const upload = multer({ dest: 'files' });
 
-/* fs.writeFile('./test.txt', 'just a test\nanother line', (err) => {
+fs.writeFile('./test.txt', 'just a test\nanother line', (err) => {
   err ? console.log(err) : console.log('Content successfully written.');
 });
 
@@ -23,7 +23,7 @@ fs.readFile('./test.txt', 'utf-8', (err, content) => {
 const readStream = fs.createReadStream('./test.txt', 'utf-8');
 const writeStream = fs.createWriteStream('./test2.txt');
 
-readStream.pipe(writeStream); */
+readStream.pipe(writeStream);
 
 app.post('/', upload.single('file'), (req, res) => {
 
